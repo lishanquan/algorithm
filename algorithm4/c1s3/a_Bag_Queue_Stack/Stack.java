@@ -1,5 +1,8 @@
 package algorithm4.c1s3.a_Bag_Queue_Stack;
 
+import algorithm4.stdlib.StdIn;
+import algorithm4.stdlib.StdOut;
+
 import java.util.Iterator;
 
 /**
@@ -48,16 +51,16 @@ public class Stack<Item> implements Iterable<Item> {
         return null;
     }
 
-//    public static void main(String[] args) {
-//        Stack<String> s = new Stack<>();
-//        while (!StdIn.isEmpty) {
-//            String item = StdIn.readString();
-//            if (!item.equals("-"))
-//                s.push(item);
-//            else if (!s.isEmpty())
-//                StdOut.print(s.pop() + "");
-//        }
-//        StdOut.println("(" + s.size() + " left on stack)");
-//    }
+    public static void main(String[] args) {
+        Stack<String> s = new Stack<>();
+        while (!StdIn.isEmpty()) {
+            String item = StdIn.readString();
+            if (!item.equals("-"))
+                s.push(item);
+            else if (!s.isEmpty())
+                StdOut.print(s.pop() + "");
+        }
+        StdOut.println("(" + s.size() + " left on stack)");
+    }
 
 }
