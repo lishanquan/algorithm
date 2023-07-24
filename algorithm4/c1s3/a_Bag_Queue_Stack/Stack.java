@@ -4,6 +4,7 @@ import algorithm4.stdlib.StdIn;
 import algorithm4.stdlib.StdOut;
 
 import java.util.Iterator;
+import java.util.NoSuchElementException;
 
 /**
  * 算法1.2下压堆栈（链表实现）
@@ -44,6 +45,19 @@ public class Stack<Item> implements Iterable<Item> {
         first = first.next;
         N--;
         return item;
+    }
+
+    // 获取栈顶元素
+    public Item peek() {
+        // diy
+//        if (first == null)
+//            return null;
+//        else
+//            return first.item;
+
+        // reference
+        if (isEmpty()) throw new NoSuchElementException("Stack underflow");
+        return first.item;
     }
 
     @Override
