@@ -62,7 +62,50 @@ public class Stack<Item> implements Iterable<Item> {
 
     @Override
     public Iterator<Item> iterator() {
-        return null;
+        return new ListIterator();
+    }
+
+    /**
+     * ListIterator维护了一个实例变量current来记录链表的当前结点。
+     * hasNext()方法会检测current是否为null, next()方法会保存当前元素的引用，将current变量指向链表中的下个结点并返回所保存的引用。
+     */
+    private class ListIterator implements Iterator<Item> {
+
+        private Node current = first;
+
+        @Override
+        public boolean hasNext() {
+            return current != null;
+        }
+
+        @Override
+        public Item next() {
+            Item item = current.item;
+            current = current.next;
+            return item;
+        }
+
+        @Override
+        public void remove() {
+
+        }
+    }
+
+    public Stack<Item> copy(Stack<Item> s) {
+        Iterator it = s.iterator();
+        Stack<Item> result = new Stack<>();
+        Stack<Item> temp = new Stack<>();
+
+        while (it.hasNext()) {
+            temp.push((Item)it.next());
+        }
+
+        it = temp.iterator();
+        while (it.hasNext()) {
+            result.push((Item)it.next());
+        }
+
+        return result;
     }
 
     public static void main(String[] args) {
